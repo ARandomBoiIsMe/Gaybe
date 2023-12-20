@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "utils/general_util.h"
+#include "utils/lexer_util.h"
+#include "lexer.h"
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -20,5 +22,5 @@ int main(int argc, char* argv[]) {
     }
 
     char* sourceCode = readFileContents(file);
-    printf(sourceCode);
+    Token* tokens = tokenize(sourceCode);
 }
