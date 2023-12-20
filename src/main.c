@@ -3,7 +3,7 @@
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        printf("Usage: ./a <filename>");
+        printf("Usage: gaybe <file.gay>");
         return 1;
     }
 
@@ -12,4 +12,13 @@ int main(int argc, char* argv[]) {
         printf("Invalid file: File must be gay.");
         return 1;
     }
+
+    FILE* file = fopen(filename, "rb");
+    if (file == NULL) {
+        printf("Invalid file: File does not exist.");
+        return 1;
+    }
+
+    char* sourceCode = readFileContents(file);
+    printf(sourceCode);
 }
