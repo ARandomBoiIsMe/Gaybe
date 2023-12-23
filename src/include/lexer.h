@@ -1,4 +1,4 @@
-#include "utils/lexer_util.h"
+#include "lexer_util.h"
 
 #ifndef LEXER_H
 #define LEXER_H

@@ -1,23 +1,53 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include <ctype.h>
-#include "utils/lexer_util.h"
-#include "utils/dynamic_token_array.h"
-#include "lexer.h"
+#include "include/lexer.h"
+#include "include/lexer_util.h"
 
-// Define Tokenize function, which returns a list of Tokens
-Token* tokenize(char* sourceCode) {
-    DynamicTokenArray tokens;
-    initializeTokenArray(&tokens, 50);
+Token* tokenize(char* source) {
+    Token* tokens = NULL;
+    int tokenCount = 0;
 
-    int codeLength = strlen(sourceCode);
+    while (*source != '\0') {
+        // Skips whitespace
+        if (isspace(*source)) {
+            source++;
+            continue;
+        }
 
-    int cursor = 0;
-    while (cursor <= codeLength) {
-        // Skip whitespace
-        if (isspace(sourceCode[cursor])) {
-            cursor++;
+        // Handles keywords and identifiers
+        if (isalpha(*source) || *source == '_') {
+            char* startOfTokenValue = source;
+
+            while (isalnum(*source) || *source == '_') {
+                source++;
+            }
+
+            char* value = custom_strndup(startOfTokenValue, source - startOfTokenValue);
+            TokenType type = isKeyword(value) == 1 ? KEYWORD : IDENTIFIER;
+
+            Token token = {value, type};
+
+            // Inserts a new token into token array
+            tokens = realloc(tokens, (tokenCount + 1) * sizeof(Token));
+            tokens[tokenCount] = token;
+            tokenCount++;
+
+            continue;
+        }
+
+        else {
+            printf("%c", *source);
+            source++;
             continue;
         }
     }
+
+    Token token = {"", END_OF_FILE};
+    tokens = realloc(tokens, (tokenCount + 1) * sizeof(Token));
+    tokens[tokenCount] = token;
+    tokenCount++;
+
+    return tokens;
 }

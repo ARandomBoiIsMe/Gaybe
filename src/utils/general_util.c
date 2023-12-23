@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "general_util.h"
+#include "../include/general_util.h"
 
 int isGayFile(char* filename) {
     char* dot = strrchr(filename, '.');
