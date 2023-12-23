@@ -3,6 +3,6 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-Token* tokenize(char* sourceCode);
+Token* tokenize(char* source);
 
 #endif
