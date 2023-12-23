@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include "utils/lexer_util.h"
 #include "utils/dynamic_token_array.h"
+#include "lexer.h"
 
 // Define Tokenize function, which returns a list of Tokens
 Token* tokenize(char* sourceCode) {
