@@ -48,7 +48,8 @@ typedef struct
     TokenType type;
 } Token;
 
-int isKeyword(char* word);
-char* custom_strndup(char* string, int size);
+int isKeyword(char** word);
+void insertToken(Token** tokens, Token* token, int* tokenCount);
+char peek(char** source);
 
 #endif

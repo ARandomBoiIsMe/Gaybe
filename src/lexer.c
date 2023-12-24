@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "include/lexer.h"
+#include "include/general_util.h"
 #include "include/lexer_util.h"
 
 Token* tokenize(char* source) {
@@ -25,14 +26,10 @@ Token* tokenize(char* source) {
             }
 
             char* value = custom_strndup(startOfTokenValue, source - startOfTokenValue);
-            TokenType type = isKeyword(value) == 1 ? KEYWORD : IDENTIFIER;
+            TokenType type = isKeyword(&value) == 1 ? KEYWORD : IDENTIFIER;
 
             Token token = {value, type};
-
-            // Inserts a new token into token array
-            tokens = realloc(tokens, (tokenCount + 1) * sizeof(Token));
-            tokens[tokenCount] = token;
-            tokenCount++;
+            insertToken(&tokens, &token, &tokenCount);
 
             continue;
         }
@@ -45,9 +42,7 @@ Token* tokenize(char* source) {
     }
 
     Token token = {"", END_OF_FILE};
-    tokens = realloc(tokens, (tokenCount + 1) * sizeof(Token));
-    tokens[tokenCount] = token;
-    tokenCount++;
+    insertToken(&tokens, &token, &tokenCount);
 
     return tokens;
 }

@@ -5,5 +5,6 @@
 
 int isGayFile(char* filename);
 char* readFileContents(FILE* file);
+char* custom_strndup(char* s, int n);
 
 #endif

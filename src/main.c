@@ -4,12 +4,12 @@
 #include "include/lexer.h"
 
 int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        printf("Usage: gaybe <file.gay>");
-        return 1;
-    }
+    // if (argc != 2) {
+    //     printf("Usage: gaybe <file.gay>");
+    //     return 1;
+    // }
 
-    char* filename = argv[1];
+    char* filename = "../test.gay";
     if (isGayFile(filename) == 0) {
         printf("Invalid file: File must be gay.");
         return 1;
