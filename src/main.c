@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "include/general_util.h"
 #include "include/lexer_util.h"
 #include "include/lexer.h"
@@ -22,9 +23,17 @@ int main(int argc, char* argv[]) {
     }
 
     char* sourceCode = readFileContents(file);
+
     Token* tokens = tokenize(sourceCode);
+    free(sourceCode);
+
+    // Generate AST
+    // Free token values
+    // Free tokens
 
     for (int i = 0; tokens[i].type != END_OF_FILE; i++) {
         printf("Type: %d, Value: %s\n", tokens[i].type, tokens[i].value);
     }
+
+    freeTokens(&tokens);
 }

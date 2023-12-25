@@ -7,6 +7,7 @@ typedef enum {
     INTEGER_LITERAL,
     STRING_LITERAL,
     DOUBLE_STAR,
+    ARROW,
     PLUS,
     STAR,
     MINUS,
@@ -19,12 +20,12 @@ typedef enum {
     DOUBLE_SLASH_EQUAL,
     PERCENT_EQUAL,
     STAR_EQUAL,
-    EXCLAMATION,
+    BANG,
     LESS_THAN,
     GREATER_THAN,
     LESS_EQUAL,
     GREATER_EQUAL,
-    NOT_EQUAL,
+    BANG_EQUAL,
     EQUAL_EQUAL,
     EQUAL,
     LEFT_PAREN,
@@ -47,6 +48,14 @@ typedef struct
     char* value;
     TokenType type;
 } Token;
+
+void skipWhitespace(char** source);
+
+Token generateIdentifierOrKeywordToken(char** source);
+Token generateStringLiteralToken(char** source);
+Token generateIntegerLiteralToken(char** source);
+Token generateOperatorToken(char** source, char* value, TokenType type);
+Token generateSymbolToken(char** source, char* value, TokenType type);
 
 int isKeyword(char** word);
 void insertToken(Token** tokens, Token* token, int* tokenCount);

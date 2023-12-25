@@ -58,3 +58,18 @@ char* custom_strndup(char* s, int n) {
 
     return p;
 }
+
+void freeTokens(Token** tokens) {
+    // Frees memory from dynamically-generated values
+    for (int i = 0; (*tokens)[i].type != END_OF_FILE; i++) {
+        if (
+            (*tokens)[i].type == IDENTIFIER || (*tokens)[i].type == KEYWORD ||
+            (*tokens)[i].type == STRING_LITERAL || (*tokens)[i].type == INTEGER_LITERAL
+        ) {
+            free((*tokens)[i].value);
+        }
+    }
+
+    // Frees memory from tokens (obv)
+    free(*tokens);
+}

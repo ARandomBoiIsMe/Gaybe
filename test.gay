@@ -1,1 +1,7 @@
 message -> str = "Hello world!"
+number -> int = 12
+thisWorks -> bool = true
+imHavingFun -> bool = false
+expression -> int += number * 12
+imHavingFun != false
+yes == true
