@@ -16,3 +16,6 @@ The file extension of this language is `.gay`.
   ./build.sh
   ./gaybe.exe <file.gay>
   ```
+
+## To be added:
+- Support for C compilers that aren't `gcc`
