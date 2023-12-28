@@ -7,14 +7,14 @@ The file extension of this language is `.gay`.
 ## Using the compiler
 - ### Windows
   ```
-  .\build.bat
-  .\gaybe.exe <file.gay>
+  > .\build.bat
+  > .\gaybe.exe <file.gay>
   ```
 
 - ### Linux
   ```
-  ./build.sh
-  ./gaybe.exe <file.gay>
+  $ ./build.sh
+  $ ./gaybe.exe <file.gay>
   ```
 
 ## To be added:
