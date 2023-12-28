@@ -23,5 +23,5 @@ output="-o gaybe.exe"
 
 compile_command="$compiler $c_files $output"
 
-echo "Buiding gaybe.exe..."
+echo "Building gaybe.exe..."
 $compile_command
